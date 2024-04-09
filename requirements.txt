@@ -1,0 +1,10 @@
+lightning>=2.2
+numpy>=1.24
+Pillow>=9.5
+torch>=2.2
+torchmetrics>=1.3
+torchvision>=0.17
+transformers>=4.37
+# for plotting
+matplotlib>=3.7
+seaborn>=0.13

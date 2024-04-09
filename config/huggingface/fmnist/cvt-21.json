@@ -1,0 +1,110 @@
+{
+  "architectures": [
+    "CvtForImageClassification"
+  ],
+  "attention_drop_rate": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "cls_token": [
+    false,
+    false,
+    true
+  ],
+  "depth": [
+    1,
+    4,
+    16
+  ],
+  "drop_path_rate": [
+    0.0,
+    0.0,
+    0.1
+  ],
+  "drop_rate": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "embed_dim": [
+    64,
+    192,
+    384
+  ],
+  "image_size": 32,
+  "initializer_range": 0.02,
+  "kernel_qkv": [
+    3,
+    3,
+    3
+  ],
+  "layer_norm_eps": 1e-12,
+  "mlp_ratio": [
+    4.0,
+    4.0,
+    4.0
+  ],
+  "model_type": "cvt",
+  "num_channels": 1,
+  "num_heads": [
+    1,
+    3,
+    6
+  ],
+  "num_labels": 10,
+  "num_stages": 3,
+  "padding_kv": [
+    1,
+    1,
+    1
+  ],
+  "padding_q": [
+    1,
+    1,
+    1
+  ],
+  "patch_padding": [
+    2,
+    1,
+    1
+  ],
+  "patch_sizes": [
+    4,
+    3,
+    3
+  ],
+  "patch_stride": [
+    4,
+    2,
+    2
+  ],
+  "pos_embed": [
+    false,
+    false,
+    false
+  ],
+  "qkv_bias": [
+    true,
+    true,
+    true
+  ],
+  "qkv_projection_method": [
+    "dw_bn",
+    "dw_bn",
+    "dw_bn"
+  ],
+  "stride_kv": [
+    2,
+    2,
+    2
+  ],
+  "stride_q": [
+    1,
+    1,
+    1
+  ],
+  "torch_dtype": "float32",
+  "transformers_version": "4.18.0.dev0"
+}
+

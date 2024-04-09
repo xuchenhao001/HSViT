@@ -1,0 +1,67 @@
+# lightning.pytorch==2.2.0
+seed_everything: 0
+model:
+  class_path: trainers.hsvit.HSViTModule
+  init_args:
+    optimizer_args:
+      lr_base: 0.001
+      lr_weight_decay: 0.01
+    num_channels: 3
+    image_size: 64
+    conv_kernel_nums:
+      - 128
+      - 256
+      - 512
+      - 512
+    conv_kernel_sizes:
+      - 3
+      - 3
+      - 3
+      - 3
+    pool_strides:
+      - 2
+      - 2
+      - 2
+      - 1
+    attn_num: 16
+    attn_depth: 8
+    attn_embed_dim: 64
+    num_heads: 8
+    num_classes: 200
+    dropout: 0.2
+data:
+  class_path: datasets.data_modules.TinyImageNetDataModule
+  init_args:
+    root_dir: /data/Tiny-ImageNet/
+    batch_size: 512
+    num_workers: 32
+    image_size: 64
+trainer:
+  callbacks:
+    - class_path: lightning.pytorch.callbacks.ModelCheckpoint
+      init_args:  # minimal val_loss checkpoint
+        every_n_epochs: 1
+        save_top_k: 1
+        monitor: val_loss
+        mode: min
+    - class_path: lightning.pytorch.callbacks.ModelCheckpoint
+      init_args:  # maximum val_acc1 checkpoint
+        every_n_epochs: 1
+        save_top_k: 1
+        monitor: val_acc1
+        mode: max
+    - class_path: lightning.pytorch.callbacks.ModelCheckpoint
+      init_args:
+        every_n_epochs: 1
+    - class_path: lightning.pytorch.callbacks.LearningRateMonitor
+      init_args:
+        logging_interval: step
+    - class_path: lightning.pytorch.callbacks.ModelSummary
+      init_args:
+        max_depth: 3
+  enable_progress_bar: True
+  gradient_clip_algorithm: norm
+  gradient_clip_val: 0.01
+  precision: 16-mixed
+  max_epochs: 300
+

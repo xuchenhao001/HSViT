@@ -1,0 +1,26 @@
+{
+  "architectures": [
+    "ResNetForImageClassification"
+  ],
+  "depths": [
+    3,
+    4,
+    6,
+    3
+  ],
+  "downsample_in_first_stage": false,
+  "embedding_size": 64,
+  "hidden_act": "relu",
+  "hidden_sizes": [
+    256,
+    512,
+    1024,
+    2048
+  ],
+  "layer_type": "bottleneck",
+  "model_type": "resnet",
+  "num_channels": 1,
+  "num_labels": 10,
+  "torch_dtype": "float32",
+  "transformers_version": "4.18.0.dev0"
+}

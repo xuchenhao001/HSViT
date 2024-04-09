@@ -1,0 +1,46 @@
+{
+  "architectures": [
+    "MobileViTForImageClassification"
+  ],
+  "aspp_dropout_prob": 0.1,
+  "aspp_out_channels": 256,
+  "atrous_rates": [
+    6,
+    12,
+    18
+  ],
+  "attention_probs_dropout_prob": 0.0,
+  "classifier_dropout_prob": 0.1,
+  "conv_kernel_size": 3,
+  "expand_ratio": 4.0,
+  "hidden_act": "silu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_sizes": [
+    96,
+    120,
+    144
+  ],
+  "image_size": 64,
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-05,
+  "mlp_ratio": 2.0,
+  "model_type": "mobilevit",
+  "neck_hidden_sizes": [
+    16,
+    32,
+    48,
+    64,
+    80,
+    96,
+    384
+  ],
+  "num_attention_heads": 4,
+  "num_channels": 3,
+  "num_labels": 100,
+  "output_stride": 32,
+  "patch_size": 2,
+  "qkv_bias": true,
+  "semantic_loss_ignore_index": 255,
+  "torch_dtype": "float32",
+  "transformers_version": "4.20.0.dev0"
+}

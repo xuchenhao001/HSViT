@@ -1,0 +1,89 @@
+{
+  "architectures": [
+    "EfficientNetForImageClassification"
+  ],
+  "batch_norm_eps": 0.001,
+  "batch_norm_momentum": 0.99,
+  "depth_coefficient": 1.0,
+  "depth_divisor": 8,
+  "depthwise_padding": [],
+  "drop_connect_rate": 0.2,
+  "dropout_rate": 0.2,
+  "expand_ratios": [
+    1,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6
+  ],
+  "hidden_act": "swish",
+  "hidden_dim": 1280,
+  "image_size": 128,
+  "in_channels": [
+    32,
+    16,
+    24,
+    40,
+    80,
+    112,
+    192
+  ],
+  "initializer_range": 0.02,
+  "kernel_sizes": [
+    3,
+    3,
+    5,
+    3,
+    5,
+    5,
+    3
+  ],
+  "model_type": "efficientnet",
+  "num_block_repeats": [
+    1,
+    2,
+    2,
+    3,
+    3,
+    4,
+    1
+  ],
+  "num_channels": 3,
+  "num_labels": 101,
+  "out_channels": [
+    16,
+    24,
+    40,
+    80,
+    112,
+    192,
+    320
+  ],
+  "out_features": null,
+  "pooling_type": "mean",
+  "squeeze_expansion_ratio": 0.25,
+  "stage_names": [
+    "stem",
+    "stage1",
+    "stage2",
+    "stage3",
+    "stage4",
+    "stage5",
+    "stage6",
+    "stage7"
+  ],
+  "strides": [
+    1,
+    2,
+    2,
+    2,
+    1,
+    2,
+    1
+  ],
+  "torch_dtype": "float32",
+  "transformers_version": "4.27.0.dev0",
+  "width_coefficient": 1.0
+}

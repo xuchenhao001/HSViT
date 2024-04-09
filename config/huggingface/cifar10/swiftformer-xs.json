@@ -1,0 +1,37 @@
+{
+  "architectures": [
+    "SwiftFormerForImageClassification"
+  ],
+  "batch_norm_eps": 1e-05,
+  "depths": [
+    3,
+    3,
+    6,
+    4
+  ],
+  "down_pad": 1,
+  "down_patch_size": 3,
+  "down_stride": 2,
+  "downsamples": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "drop_path_rate": 0.0,
+  "embed_dims": [
+    48,
+    56,
+    112,
+    220
+  ],
+  "hidden_act": "gelu",
+  "layer_scale_init_value": 1e-05,
+  "mlp_ratio": 4,
+  "model_type": "swiftformer",
+  "num_channels": 3,
+  "num_labels": 10,
+  "torch_dtype": "float32",
+  "transformers_version": "4.30.0.dev0",
+  "use_layer_scale": true
+}
