@@ -64,3 +64,18 @@ import resource
 rlimit = resource.getrlimit(resource.RLIMIT_NOFILE)
 resource.setrlimit(resource.RLIMIT_NOFILE, (2048, rlimit[1]))
 ```
+
+## Citation
+
+If you find the code useful, please use the following BibTeX entry.
+
+```BibTeX
+@misc{xu2024hsvit,
+      title={HSViT: Horizontally Scalable Vision Transformer}, 
+      author={Chenhao Xu and Chang-Tsun Li and Chee Peng Lim and Douglas Creighton},
+      year={2024},
+      eprint={2404.05196},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
