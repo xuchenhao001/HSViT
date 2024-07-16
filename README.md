@@ -38,6 +38,14 @@ Train ResNet18 on CIFAR-10:
 $ python3 main.py fit --config=config/sota_cifar10.yaml --model.init_args.sota_config_path="./config/huggingface/resnet-18.json"
 ```
 
+### Train HSViT with existing CNN backbones
+
+Download [Hugginface ResNet50 model](https://huggingface.co/microsoft/resnet-50) (`pytorch_model.bin` and `config.json`) to `./huggingface/` folder. Then, train HSViT + ResNet50 on ImageNet-1k:
+
+```bash
+$ python3 main.py fit --config=config/hsvit_het_imagenet.yaml
+```
+
 ## View Logs
 
 Start a TensorBoard service based on directory of `lightning_logs`:

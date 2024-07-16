@@ -1,0 +1,62 @@
+# lightning.pytorch==2.2.0
+seed_everything: 0
+model:
+  class_path: trainers.hsvit_het.HSViTHETModule
+  init_args:
+    optimizer_args:
+      lr_base: 0.001
+      lr_weight_decay: 0.01
+      lr_warmup_epochs: 2
+    label_smoothing: 0.1
+    num_channels: 3
+    image_size: 224
+    sub_module_path: ./huggingface/resnet-50
+    sub_module_feature_size: 49  # 7*7
+    conv_kernel_num: 2048  # 2048 (ResNet50)
+    enable_conv_layer: True
+    attn_num: 64
+    attn_depth: 2
+    attn_embed_dim: 56  # ceiling(49), dividable by num_heads
+    num_heads: 8
+    num_classes: 1000
+    dropout: 0.2
+data:
+  class_path: datasets.data_modules.ImageNetDataModule
+  init_args:
+    root_dir: /data/ImageNet/
+    batch_size: 128
+    num_workers: 32
+    pin_memory: False
+    image_size: 224
+    mixup_alpha: 0.2
+    cutmix_alpha: 1.0
+    random_erase: 0.1
+trainer:
+  callbacks:
+    - class_path: lightning.pytorch.callbacks.ModelCheckpoint
+      init_args:  # minimal val_loss checkpoint
+        every_n_epochs: 1
+        save_top_k: 1
+        monitor: val_loss
+        mode: min
+    - class_path: lightning.pytorch.callbacks.ModelCheckpoint
+      init_args:  # maximum val_acc1 checkpoint
+        every_n_epochs: 1
+        save_top_k: 1
+        monitor: val_acc1
+        mode: max
+    - class_path: lightning.pytorch.callbacks.ModelCheckpoint
+      init_args:
+        every_n_epochs: 1
+    - class_path: lightning.pytorch.callbacks.LearningRateMonitor
+      init_args:
+        logging_interval: step
+    - class_path: lightning.pytorch.callbacks.ModelSummary
+      init_args:
+        max_depth: 3
+  enable_progress_bar: True
+  gradient_clip_algorithm: norm
+  gradient_clip_val: 0.01
+  precision: 16-mixed
+  max_epochs: 30
+
