@@ -146,8 +146,35 @@ def conv_depth_vs_attn_depth(save_path):
         plt.show()
 
 
+def gpu_vs_itr(save_path):
+    sns.set_theme(
+        style="ticks",
+        font="Times New Roman"
+    )
+    df = pd.read_csv('./data/gpu_vs_itr.csv')
+    df = df.melt(id_vars=["# GPUs"], var_name="Scheme", value_name="ITR")
+
+    grid = sns.relplot(
+        data=df,
+        kind="line",
+        x="# GPUs",
+        y="ITR",
+        hue="Scheme",
+        marker='o',
+        height=2.5,
+        aspect=16 / 9
+    )
+    sns.move_legend(grid, "lower center", bbox_to_anchor=(.5, 0.75), ncol=4)
+    grid.fig.tight_layout(pad=0.2, rect=(0, 0, 1, 0.9))
+
+    if save_path:
+        plt.savefig(save_path, format="pdf")
+    else:
+        plt.show()
+
+
 def main():
-    num_param_vs_acc("")
+    # num_param_vs_acc("")
     # num_param_vs_acc("./output/num_param_vs_acc.pdf")
     # num_conv_kernel_vs_num_attn("")
     # num_conv_kernel_vs_num_attn("./output/num_conv_kernel_vs_num_attn.pdf")
@@ -157,6 +184,8 @@ def main():
     # attn_group_vs_attn_depth("./output/attn_group_vs_attn_depth.pdf")
     # conv_depth_vs_attn_depth("")
     # conv_depth_vs_attn_depth("./output/conv_depth_vs_attn_depth.pdf")
+    # gpu_vs_itr("")
+    gpu_vs_itr("./output/gpu_vs_itr.pdf")
 
 
 if __name__ == "__main__":
